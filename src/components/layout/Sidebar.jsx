@@ -49,9 +49,9 @@ function NavItems({ onClose }) {
 export default function Sidebar({ isOpen, onClose }) {
   return (
     <>
-      {/* ── MOBILE DRAWER ── */}
+      {/* MOBILE DRAWER */}
 
-      {/* Backdrop */}
+     
       <div
         onClick={onClose}
         style={{
@@ -103,7 +103,7 @@ export default function Sidebar({ isOpen, onClose }) {
         </div>
       </div>
 
-      {/* ── DESKTOP SIDEBAR ── always visible, static */}
+      {/* DESKTOP SIDEBAR always visible, static */}
       <aside className="hidden lg:flex w-56 shrink-0 flex-col h-screen sticky top-0 bg-zinc-950 border-r border-zinc-800/60">
         <div className="px-5 py-5 border-b border-zinc-800/60">
           <div className="flex items-center gap-2.5">
