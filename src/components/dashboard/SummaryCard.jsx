@@ -21,7 +21,7 @@ export default function SummaryCard({ title, value, change, changeLabel, accent 
         {isPositive ? <TrendingUp size={11} /> : <TrendingDown size={11} />}
         <span className="">
           {isPositive ? "↑" : "↓"} {Math.abs(change)}%{" "}
-          <span className="hidden sm:inline">{changeLabel ?? "from last month"}</span>
+          <span className=" sm:inline">{changeLabel ?? "from last month"}</span>
         </span>
       </div>
     </div>

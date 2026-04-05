@@ -7,8 +7,8 @@ export default function Topbar({ onMenuClick }) {
   return (
     <header className="h-14 border-b border-zinc-800/60 bg-zinc-950/80 backdrop-blur-md sticky top-0 z-30 flex items-center justify-between px-4 gap-4">
 
-      {/* Left  hamburger + logo */}
-      <div className="flex items-center gap-3 sm:hidden">
+      {/* Left — mobile only: hamburger + logo */}
+      <div className="flex items-center gap-3 lg:hidden">
         <button
           onClick={onMenuClick}
           className="p-2 rounded-lg hover:bg-zinc-800 text-zinc-400 hover:text-zinc-200 transition-colors"
@@ -21,8 +21,8 @@ export default function Topbar({ onMenuClick }) {
         </div>
       </div>
 
-      
-      <div className="hidden sm:block flex-1" />
+      {/* Spacer — desktop only */}
+      <div className="hidden lg:block flex-1" />
 
       {/* Right: role switcher + avatar */}
       <div className="flex items-center gap-3">

@@ -49,9 +49,9 @@ function NavItems({ onClose }) {
 export default function Sidebar({ isOpen, onClose }) {
   return (
     <>
-      {/* MOBILE DRAWER */}
+      {/* ── MOBILE DRAWER ── */}
 
-     
+      {/* Backdrop */}
       <div
         onClick={onClose}
         style={{
@@ -63,7 +63,7 @@ export default function Sidebar({ isOpen, onClose }) {
           pointerEvents: isOpen ? "auto" : "none",
           transition: "opacity 0.3s ease",
         }}
-        className="sm:hidden"
+        className="lg:hidden"
       />
 
       {/* Drawer panel */}
@@ -82,7 +82,7 @@ export default function Sidebar({ isOpen, onClose }) {
           background: "#09090b",
           borderRight: "1px solid rgba(39,39,42,0.6)",
         }}
-        className="sm:hidden"
+        className="lg:hidden"
       >
         {/* Logo + close */}
         <div className="px-5 py-5 border-b border-zinc-800/60 flex items-center justify-between">
@@ -103,8 +103,8 @@ export default function Sidebar({ isOpen, onClose }) {
         </div>
       </div>
 
-      {/* DESKTOP SIDEBAR */}
-      <aside className="hidden sm:flex w-56 shrink-0 flex-col h-screen sticky top-0 bg-zinc-950 border-r border-zinc-800/60">
+      {/* ── DESKTOP SIDEBAR ── always visible, static */}
+      <aside className="hidden lg:flex w-56 shrink-0 flex-col h-screen sticky top-0 bg-zinc-950 border-r border-zinc-800/60">
         <div className="px-5 py-5 border-b border-zinc-800/60">
           <div className="flex items-center gap-2.5">
             <span className="w-2 h-2 rounded-full bg-indigo-500 shadow-lg shadow-indigo-500/50" />
