@@ -4,16 +4,12 @@ import Badge from "../common/Badge";
 import { formatCurrency, amountColorClass, formatDate } from "../../utils/formatCurrency";
 import { Pencil, Trash2 } from "lucide-react";
 
-// Mobile card — actions always visible, no hover required
 function TransactionCard({ txn, isAdmin, onEdit, onDelete }) {
   const amtClass = amountColorClass(txn.amount);
   return (
     <div className="flex items-start justify-between gap-3 py-3.5 border-b border-zinc-800/60 last:border-0">
-      {/* Left */}
       <div className="flex items-start gap-3 min-w-0">
-        <span className="text-xl w-9 h-9 flex items-center justify-center bg-zinc-800 rounded-xl shrink-0">
-          {txn.icon ?? "💳"}
-        </span>
+
         <div className="min-w-0">
           <p className="text-zinc-200 text-sm font-medium truncate">{txn.description}</p>
           <p className="text-zinc-500 text-xs">{txn.merchant}</p>
@@ -24,13 +20,11 @@ function TransactionCard({ txn, isAdmin, onEdit, onDelete }) {
         </div>
       </div>
 
-      {/* Right */}
       <div className="flex flex-col items-end gap-2 shrink-0">
         <span className={`text-sm font-semibold ${amtClass}`}>
           {formatCurrency(txn.amount, { showSign: true })}
         </span>
         <Badge label={txn.type === "income" ? "Income" : "Expense"} variant={txn.type} />
-        {/* Always visible on mobile */}
         {isAdmin && (
           <div className="flex items-center gap-1">
             <button
@@ -67,7 +61,7 @@ export default function TransactionsTable({ transactions, onEdit, onDelete }) {
 
   return (
     <>
-      {/* Mobile: card layout — no scroll, actions always shown */}
+      {/* MOBILE: card list — no table, no scroll, actions always visible */}
       <div className="sm:hidden">
         {transactions.map((txn) => (
           <TransactionCard
@@ -80,7 +74,7 @@ export default function TransactionsTable({ transactions, onEdit, onDelete }) {
         ))}
       </div>
 
-      {/* Desktop: full table — actions appear on row hover */}
+      {/* DESKTOP: full table, hover to reveal actions */}
       <div className="hidden sm:block overflow-x-auto">
         <table className="w-full">
           <thead>

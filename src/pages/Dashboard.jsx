@@ -45,12 +45,14 @@ export default function Dashboard() {
 
   return (
     <div className="space-y-5 max-w-7xl">
-      {/* Header — stacks on mobile */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+
+      {/* Header — stacks vertically on mobile */}
+      <div className="flex flex-col sm:flex-row sm:items-start gap-3 justify-between">
         <div>
           <h1 className="text-xl sm:text-2xl font-bold text-white tracking-tight">Overview</h1>
           <p className="text-zinc-500 text-sm mt-0.5">{monthLabel}</p>
         </div>
+
         <div className="flex items-center gap-2 flex-wrap">
           {/* Period tabs */}
           <div className="flex items-center gap-1 bg-zinc-800/60 rounded-xl p-1">
@@ -68,23 +70,39 @@ export default function Dashboard() {
               </button>
             ))}
           </div>
+
           {isAdmin && (
             <Button
               onClick={() => { setEditData(null); setModalOpen(true); }}
               icon={<Plus size={15} />}
-              size="sm"
             >
-              Add
+              <span className="hidden sm:inline">Add</span>
+              <span className="sm:hidden">Add</span>
             </Button>
           )}
         </div>
       </div>
 
-      {/* Summary Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
-        <SummaryCard title="Total Balance" value={formatCurrency(summary.totalBalance)} change={7.2} accent="blue" />
-        <SummaryCard title="Income" value={formatCurrency(summary.totalIncome)} change={5.1} accent="green" />
-        <SummaryCard title="Expenses" value={formatCurrency(summary.totalExpenses)} change={3.4} accent="red" />
+      {/* Summary Cards — 3 columns always, compact on mobile */}
+      <div className="grid grid-cols-3 gap-2 sm:gap-4">
+        <SummaryCard
+          title="Total"
+          value={formatCurrency(summary.totalBalance)}
+          change={7.2}
+          accent="blue"
+        />
+        <SummaryCard
+          title="Income"
+          value={formatCurrency(summary.totalIncome)}
+          change={5.1}
+          accent="green"
+        />
+        <SummaryCard
+          title="Expenses"
+          value={formatCurrency(summary.totalExpenses)}
+          change={3.4}
+          accent="red"
+        />
       </div>
 
       {/* Charts */}
@@ -93,19 +111,24 @@ export default function Dashboard() {
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-white font-semibold text-sm">Income vs Expenses</h2>
             <div className="flex items-center gap-3 text-xs text-zinc-400">
-              <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-emerald-500" /> Income</span>
-              <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-rose-500" /> Expense</span>
+              <span className="flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-emerald-500" /> Income
+              </span>
+              <span className="flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-rose-500" /> Expense
+              </span>
             </div>
           </div>
           <BarChart data={chartData} />
         </div>
+
         <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-4 sm:p-5">
           <h2 className="text-white font-semibold text-sm mb-4">Spending breakdown</h2>
           <DonutChart data={summary.spendingBreakdown} />
         </div>
       </div>
 
-      {/* Insight Cards */}
+      {/* Insight cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
         {insights.highestSpending && <InsightCard {...insights.highestSpending} />}
         <InsightCard {...insights.monthlySaved} />
@@ -114,7 +137,7 @@ export default function Dashboard() {
 
       {/* Recent Transactions */}
       <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-4 sm:p-5">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+        <div className="flex items-center justify-between mb-4 flex-wrap gap-3">
           <h2 className="text-white font-semibold">Recent Transactions</h2>
           <FilterBar
             filterType={filterType}

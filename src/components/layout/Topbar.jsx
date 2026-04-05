@@ -7,7 +7,7 @@ export default function Topbar({ onMenuClick }) {
   return (
     <header className="h-14 border-b border-zinc-800/60 bg-zinc-950/80 backdrop-blur-md sticky top-0 z-30 flex items-center justify-between px-4 gap-4">
 
-      {/* Left: hamburger (mobile) + logo (mobile) */}
+      {/* Left  hamburger + logo */}
       <div className="flex items-center gap-3 sm:hidden">
         <button
           onClick={onMenuClick}
@@ -21,7 +21,7 @@ export default function Topbar({ onMenuClick }) {
         </div>
       </div>
 
-      {/* Spacer on desktop (logo lives in sidebar) */}
+      
       <div className="hidden sm:block flex-1" />
 
       {/* Right: role switcher + avatar */}

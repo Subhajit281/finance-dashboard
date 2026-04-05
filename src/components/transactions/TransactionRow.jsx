@@ -7,10 +7,9 @@ export default function TransactionRow({ txn, isAdmin, onEdit, onDelete }) {
 
   return (
     <tr className="border-b border-zinc-800/60 hover:bg-zinc-800/30 transition-colors group">
-      {/*description */}
+      {/* Description */}
       <td className="py-3.5 px-4">
         <div className="flex items-center gap-3">
-          
           <div>
             <p className="text-zinc-200 text-sm font-medium leading-snug">
               {txn.description}
@@ -43,7 +42,7 @@ export default function TransactionRow({ txn, isAdmin, onEdit, onDelete }) {
       {/* Admin actions */}
       {isAdmin && (
         <td className="py-3.5 px-4">
-          <div className="flex items-center justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+          <div className="flex items-center justify-end gap-1 opacity-100 sm:opacity-100 sm:group-hover:opacity-100 transition-opacity">
             <button
               onClick={() => onEdit?.(txn)}
               className="p-1.5 rounded-lg hover:bg-zinc-700 text-zinc-400 hover:text-zinc-200 transition-colors"
